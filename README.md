@@ -4,12 +4,12 @@ RabbitMQ, шаблон **RabbitMQ-ZA-template.xml**
 
 Сценарий отправки статистики сервера RabbitMQ на сервер Zabbix
 
-`chmod 750 /etc/zabbix/{JSON.sh,rabbitmq_stat.sh}`
+`chmod 750 /etc/zabbix/{JSON.sh,rabbitmq_ZA.sh}`
 
-`chgrp zabbix /etc/zabbix/{JSON.sh,rabbitmq_stat.sh}`
+`chgrp zabbix /etc/zabbix/{JSON.sh,rabbitmq_ZA.sh}`
 
 
-В сценарии в подстроке
+В сценарии rabbitmq_ZA.sh в подстроке
 
 `... --user Пользователь_мониторинга:Пароль_мониторинга ...`
 
@@ -19,7 +19,7 @@ RabbitMQ, шаблон **RabbitMQ-ZA-template.xml**
 Добавить плагин управления rabbitmq_management
 [...,rabbitmq_management].
 
-Добавить RabbitMQ-пользователь мониторинга
+Добавить RabbitMQ-пользователя мониторинга
 
 ```
 rabbitmqctl add_user Пользователь_мониторинга Пароль_мониторинга
