@@ -1,6 +1,6 @@
 # Zabbix
 
-RabbitMQ, шаблон **RabbitMQ-ZA-template.xml**
+# RabbitMQ, шаблон **RabbitMQ-ZA-template.xml**
 
 Сценарий отправки статистики сервера RabbitMQ на сервер Zabbix
 
@@ -35,7 +35,9 @@ rabbitmqctl set_permissions Пользователь_мониторинга '' '
 systemctl restart  zabbix-agent 
 
 
-MongoDB, шаблон **MongoDB-ZA-template.xml**
+# MongoDB, шаблон **MongoDB-ZA-template.xml**
+
+Данный шаблон можно применять и к SECONDARY и к PRIMARY серверу replicaSet.
 
 Сценарий отправки статистики сервера MongoDB на сервер Zabbix
 
