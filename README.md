@@ -33,3 +33,27 @@ rabbitmqctl set_permissions Пользователь_мониторинга '' '
 Перезапуск агента
 
 systemctl restart  zabbix-agent 
+
+
+MongoDB, шаблон **MongoDB-ZA-template.xml**
+
+Сценарий отправки статистики сервера MongoDB на сервер Zabbix
+
+`chmod 750 /etc/zabbix/{JSON.sh,mongodb.sh}`
+
+`chgrp zabbix /etc/zabbix/{JSON.sh,mongodb_ZA.sh}`
+
+Создать пользователя мониторинга в mongo:
+
+```
+use admin
+db.createUser( { user: "mongouser", pwd: "mongopassword", roles: [ { role: "clusterMonitor", db: "admin" } ] } )
+```
+
+В скрипте mongodb_ZA.sh поменять значение переменных $MONGO_USER и $MONGO_PASSWORD на те что указали при создание пользователя мониторинга.
+
+Скопировать mongodb.conf в директорию /etc/zabbix/zabbix_agentd.d
+
+Перезапуск агента
+
+systemctl restart  zabbix-agent
