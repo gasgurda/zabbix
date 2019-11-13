@@ -2,7 +2,7 @@
 
 # RabbitMQ, шаблон **RabbitMQ-ZA-template.xml**
 
-Сценарий отправки статистики сервера RabbitMQ на сервер Zabbix
+Сценарий отправки статистики сервера RabbitMQ на сервер Zabbix. Тип проверки Zabbix-agent.
 
 `chmod 750 /etc/zabbix/{JSON.sh,rabbitmq_ZA.sh}`
 
@@ -39,9 +39,9 @@ systemctl restart  zabbix-agent
 
 Данный шаблон можно применять и к SECONDARY и к PRIMARY серверу replicaSet.
 
-Сценарий отправки статистики сервера MongoDB на сервер Zabbix
+Сценарий отправки статистики сервера MongoDB на сервер Zabbix. Тип проверки Zabbix-agent.
 
-`chmod 750 /etc/zabbix/{JSON.sh,mongodb.sh}`
+`chmod 750 /etc/zabbix/{JSON.sh,mongodb_ZA.sh}`
 
 `chgrp zabbix /etc/zabbix/{JSON.sh,mongodb_ZA.sh}`
 
@@ -59,3 +59,21 @@ db.createUser( { user: "mongouser", pwd: "mongopassword", roles: [ { role: "clus
 Перезапуск агента
 
 systemctl restart  zabbix-agent
+
+
+# ElasticSearch, шаблон **ElasticSearch-ZA-template.xml**
+
+
+Сценарий отправки статистики сервера Elasticsearch на сервер Zabbix. Тип проверки Zabbix-agent.
+
+`chmod 750 /etc/zabbix/{JSON.sh,elasticsearch_ZA.sh}`
+
+`chgrp zabbix /etc/zabbix/{JSON.sh,elasticsearch_ZA.sh}`
+
+
+Скопировать mongodb.conf в директорию /etc/zabbix/zabbix_agentd.d
+
+Перезапуск агента
+
+systemctl restart  zabbix-agent
+
