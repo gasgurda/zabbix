@@ -4,9 +4,9 @@
 
 Сценарий отправки статистики сервера RabbitMQ на сервер Zabbix. Тип проверки Zabbix-agent.
 
-`chmod 750 /etc/zabbix/{JSON.sh,rabbitmq_ZA.sh}`
+`chmod 750 /etc/zabbix/scripts/{JSON.sh,rabbitmq_ZA.sh}`
 
-`chgrp zabbix /etc/zabbix/{JSON.sh,rabbitmq_ZA.sh}`
+`chgrp zabbix /etc/zabbix/scripts/{JSON.sh,rabbitmq_ZA.sh}`
 
 
 В сценарии rabbitmq_ZA.sh в подстроке
@@ -41,9 +41,9 @@ systemctl restart  zabbix-agent
 
 Сценарий отправки статистики сервера MongoDB на сервер Zabbix. Тип проверки Zabbix-agent.
 
-`chmod 750 /etc/zabbix/{JSON.sh,mongodb_ZA.sh}`
+`chmod 750 /etc/zabbix/scripts/{JSON.sh,mongodb_ZA.sh}`
 
-`chgrp zabbix /etc/zabbix/{JSON.sh,mongodb_ZA.sh}`
+`chgrp zabbix /etc/zabbix/scripts/{JSON.sh,mongodb_ZA.sh}`
 
 Создать пользователя мониторинга в mongo:
 
@@ -66,9 +66,9 @@ systemctl restart  zabbix-agent
 
 Сценарий отправки статистики сервера Elasticsearch на сервер Zabbix. Тип проверки Zabbix-agent.
 
-`chmod 750 /etc/zabbix/{JSON.sh,elasticsearch_ZA.sh}`
+`chmod 750 /etc/zabbix/scripts/{JSON.sh,elasticsearch_ZA.sh}`
 
-`chgrp zabbix /etc/zabbix/{JSON.sh,elasticsearch_ZA.sh}`
+`chgrp zabbix /etc/zabbix/scripts/{JSON.sh,elasticsearch_ZA.sh}`
 
 
 Скопировать mongodb.conf в директорию /etc/zabbix/zabbix_agentd.d
@@ -77,3 +77,18 @@ systemctl restart  zabbix-agent
 
 systemctl restart  zabbix-agent
 
+
+
+# Проверка локального порта. Тип проверки Zabbix-agent.
+
+Использовать только для проверок с ограниченной сетевой  доступностью портов для Zabbix Server.
+
+Предворительное требование:
+- пакет nmap
+
+Скопировать scripts/check_port.sh в /etc/zabbix/scripts/check_port.sh
+Скопировать zabbix_agentd.d/check_port.conf в /etc/zabbix/zabbix_agentd.d/check_port.conf
+`chmod 750 /etc/zabbix/scipts/check_port.sh`
+`chown .zabbix /etc/zabbix/scipts/check_port.sh`
+
+Создать Teamplate , в нем Item с ключём check_port[{HOST.IP},22] (22 - номер порта SSH для проверки, поменять на требуемый. {HOST.IP} - ip адрес указанный в настроках узла Zabbix хоста).
